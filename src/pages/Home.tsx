@@ -15,7 +15,7 @@ const projects: Project[] = [
   {
     name: 'Ichiro Walks',
     icon: '/icons/ichiro-walks.png',
-    path: '/ichiro-walks/',
+    path: '/ichiro-walks/today',
   },
   {
     name: 'Shortly',

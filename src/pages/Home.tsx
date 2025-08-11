@@ -31,34 +31,29 @@ const projects: Project[] = [
 
 export default function Home() {
   return (
-    <div style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
-      <h1>Dario's Lab</h1>
-      <ul style={{ listStyle: 'none', padding: 0 }}>
-        {projects.map((p) => (
-          <li key={p.path} style={{ margin: '1rem 0' }}>
-            <a
-              href={p.path}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                textDecoration: 'none',
-                color: 'inherit',
-              }}
-            >
-              <img
-                src={p.icon}
-                alt={`${p.name} icon`}
-                width={32}
-                height={32}
-                style={{ marginRight: '0.75rem' }}
-              />
-              <span style={{ fontSize: '1.25rem' }}>{p.name}</span>
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <main className="min-h-dvh bg-base-100">
+      <div className="container mx-auto px-4 py-10">
+        <header className="mb-8 flex items-center justify-between">
+          <h1 className="text-3xl font-semibold">Dario's Lab</h1>
+        </header>
+        <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {projects.map((p) => (
+            <li key={p.path}>
+              <a
+                href={p.path}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="card bg-base-200 hover:bg-base-300 transition shadow-md"
+              >
+                <div className="card-body flex-row items-center gap-4">
+                  <img src={p.icon} alt="" className="size-10" />
+                  <h2 className="card-title text-lg">{p.name}</h2>
+                </div>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </main>
   );
 }

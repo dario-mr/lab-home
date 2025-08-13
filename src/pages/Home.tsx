@@ -10,7 +10,7 @@ const listAnimation: Variants = {
   hidden: {},
   show: {
     transition: {
-      delayChildren: stagger(0.05),
+      delayChildren: stagger(0.06),
     },
   },
 };

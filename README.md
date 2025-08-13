@@ -1,3 +1,3 @@
-# Lab home
+# Dario's Lab
 
 Homepage of my side projects.

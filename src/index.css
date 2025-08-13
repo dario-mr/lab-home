@@ -1,10 +1,7 @@
 @import "tailwindcss";
+@import "./components/theme-picker/ThemePicker.css";
+@import "./components/header/Header.css";
 
 @plugin "daisyui" {
   themes: all;
-}
-
-.badge-outline-thin {
-  @apply bg-transparent border-solid border-base-content/30 text-base-content/70;
-  border-width: 1px;
 }

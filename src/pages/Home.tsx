@@ -1,7 +1,7 @@
 import React from 'react';
 import { projects } from '../data/projects';
 import { useHealth } from '../hooks/useHealth';
-import { Header } from '../components/Header';
+import { Header } from '../components/header/Header';
 import { ProjectCard } from '../components/ProjectCard';
 import { motion, stagger, type Variants } from 'framer-motion';
 import { useVersion } from '../hooks/useVersion';

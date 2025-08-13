@@ -1,0 +1,17 @@
+/* Row */
+.theme-row {
+  @apply w-full flex items-center gap-3 rounded-lg px-3 py-2
+  text-sm text-left bg-base-200 hover:bg-base-300 text-base-content
+  transition-colors focus:outline-none
+  focus-visible:ring-inset focus-visible:ring-2 focus-visible:ring-primary/50;
+}
+
+/* Selected state: inset ring so it doesn't clip */
+.theme-row[data-selected="true"] {
+  @apply ring-inset ring-1 ring-primary/40;
+}
+
+/* The three color dots */
+.theme-swatch {
+  @apply h-4 w-4 rounded;
+}

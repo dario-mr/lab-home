@@ -4,6 +4,7 @@ import { useHealth } from '../hooks/useHealth';
 import { Header } from '../components/Header';
 import { ProjectCard } from '../components/ProjectCard';
 import { motion, stagger, type Variants } from 'framer-motion';
+import { useVersion } from '../hooks/useVersion';
 
 const listAnimation: Variants = {
   hidden: {},
@@ -25,6 +26,7 @@ const itemAnimation: Variants = {
 
 export default function Home() {
   const health = useHealth(projects);
+  const version = useVersion(projects);
 
   return (
     <main className="min-h-dvh bg-base-100">
@@ -39,7 +41,11 @@ export default function Home() {
         >
           {projects.map((project) => (
             <motion.li key={project.path} variants={itemAnimation}>
-              <ProjectCard project={project} status={health[project.health]} />
+              <ProjectCard
+                project={project}
+                status={health[project.healthPath]}
+                version={version[project.infoPath]}
+              />
             </motion.li>
           ))}
         </motion.ul>

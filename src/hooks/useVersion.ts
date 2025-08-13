@@ -1,40 +1,39 @@
 import { useEffect, useState } from 'react';
-import type { Project, Status } from '../types';
+import type { Project } from '../types';
 
-export function useHealth(items: Project[], timeoutMs = 5000) {
-  const [health, setHealth] = useState<Record<string, Status>>({});
+export function useVersion(items: Project[], timeoutMs = 5000) {
+  const [version, setVersion] = useState<Record<string, string>>({});
 
   useEffect(() => {
     let mounted = true;
     const abortControllers = items.map(() => new AbortController());
 
     items.forEach((project, i) => {
-      setHealth((h) => ({ ...h, [project.healthPath]: '...' })); // loading
+      setVersion((h) => ({ ...h, [project.infoPath]: '...' })); // loading
       const abortController = abortControllers[i];
       const timeout = setTimeout(() => abortController.abort(), timeoutMs);
 
-      fetch(project.healthPath, {
+      fetch(project.infoPath, {
         headers: { accept: 'application/json' },
         signal: abortController.signal,
       })
         .then(async (res) => {
           if (!res.ok) {
-            return 'DOWN' as Status;
+            return null;
           }
 
           const contentType = res.headers.get('content-type') || '';
-          if (contentType.includes('application/json')) {
-            const body = await res.json().catch(() => ({}));
-            const status = String(body?.status ?? '').toUpperCase();
-            return status === 'UP' ? 'UP' : 'DOWN';
+          if (!contentType.includes('application/json')) {
+            return null; // reachable non-JSON
           }
 
-          return 'UP' as Status; // reachable non-JSON
+          const body = await res.json().catch(() => ({}));
+          return body?.build?.version ?? null;
         })
-        .catch(() => 'DOWN' as Status)
+        .catch(() => null)
         .then((s) => {
           if (mounted) {
-            setHealth((h) => ({ ...h, [project.healthPath]: s }));
+            setVersion((h) => ({ ...h, [project.infoPath]: s }));
           }
         })
         .finally(() => clearTimeout(timeout));
@@ -46,5 +45,5 @@ export function useHealth(items: Project[], timeoutMs = 5000) {
     };
   }, [items, timeoutMs]);
 
-  return health;
+  return version;
 }

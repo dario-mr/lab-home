@@ -3,10 +3,12 @@ import type { Project, Status } from '../types';
 
 export function ProjectCard({
   project,
-  status = '...',
+  status,
+  version,
 }: {
   project: Project;
   status?: Status;
+  version?: string;
 }) {
   const badge =
     status === 'UP'
@@ -29,7 +31,12 @@ export function ProjectCard({
       <div className="card-body flex-row items-center p-5 gap-4">
         <img src={project.icon} alt="" className="size-10" />
         <h2 className="card-title text-lg">{project.name}</h2>
-        <span className={`ml-auto badge badge-sm ${badge}`}>{status}</span>
+        <div className="ml-auto flex flex-col items-end gap-1">
+          {version && (
+            <span className="badge badge-outline badge-sm">v{version}</span>
+          )}
+          <span className={`ml-auto badge badge-sm ${badge}`}>{status}</span>
+        </div>
       </div>
     </motion.a>
   );

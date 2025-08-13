@@ -4,5 +4,6 @@ export interface Project {
   name: string;
   icon: string;
   path: string;
-  health: string;
+  healthPath: string;
+  infoPath: string;
 }

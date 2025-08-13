@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="caramellatte">
+<html lang="en">
 <head>
   <meta charset="UTF-8"/>
   <link rel="icon" href="icons/favicon.png"/>
@@ -8,6 +8,17 @@
 </head>
 <body>
 <div id="root"></div>
+<script>
+  // prevent flashing by applying the theme before the app loads
+  (function () {
+    try {
+      const currentTheme = localStorage.getItem('appTheme') || 'caramellatte';
+      document.documentElement.setAttribute('data-theme', currentTheme);
+    } catch (e) {
+      console.error(`Could not set theme before app load`, e);
+    }
+  })();
+</script>
 <script type="module" src="src/index.tsx"></script>
 </body>
 </html>

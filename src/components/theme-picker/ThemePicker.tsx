@@ -7,10 +7,13 @@ const themeNames = Object.values(Themes) as ThemeName[];
 
 export function ThemePicker() {
   const [theme, setTheme] = React.useState<ThemeName>(getCurrentTheme());
+  const [open, setOpen] = React.useState(false);
+  const ref = React.useRef<HTMLDivElement>(null);
 
-  React.useEffect(() => applyTheme(theme), []); // ensure DOM matches on first render
+  // Ensure DOM matches on first render
+  React.useEffect(() => applyTheme(theme), []);
 
-  // Keep state in sync if another tab changes it
+  // Sync if another tab changes the theme
   React.useEffect(() => {
     const fn = (e: StorageEvent) => {
       if (e.key === LocalStorageKeys.APP_THEME && typeof e.newValue === 'string') {
@@ -23,12 +26,46 @@ export function ThemePicker() {
     return () => window.removeEventListener('storage', fn);
   }, []);
 
+  // Close on outside click / ESC
+  React.useEffect(() => {
+    const onPointerDown = (e: PointerEvent) => {
+      if (!ref.current?.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    };
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setOpen(false);
+      }
+    };
+    window.addEventListener('pointerdown', onPointerDown);
+    window.addEventListener('keydown', onKeyDown);
+    return () => {
+      window.removeEventListener('pointerdown', onPointerDown);
+      window.removeEventListener('keydown', onKeyDown);
+    };
+  }, []);
+
+  const chooseTheme = (t: ThemeName) => {
+    setTheme(t);
+    applyTheme(t);
+    setOpen(false);
+  };
+
   return (
-    <div className="dropdown dropdown-end">
-      <button className="btn btn-ghost btn-sm">Theme</button>
+    <div ref={ref} className={`dropdown dropdown-end ${open ? 'dropdown-open' : ''}`}>
+      <button
+        type="button"
+        className="btn btn-ghost btn-sm"
+        aria-haspopup="listbox"
+        aria-expanded={open}
+        onClick={() => setOpen((o) => !o)}
+      >
+        Theme
+      </button>
 
       <div className="dropdown-content z-20 mt-2 w-64 rounded-box bg-base-200 p-2 shadow">
-        <ul className="max-h-80 overflow-y-auto space-y-2">
+        <ul className="max-h-80 overflow-y-auto space-y-2" role="listbox">
           {themeNames.map((t) => {
             const selected = t === theme;
             return (
@@ -37,10 +74,9 @@ export function ThemePicker() {
                   type="button"
                   data-theme={t}
                   data-selected={selected}
-                  onClick={() => {
-                    setTheme(t);
-                    applyTheme(t);
-                  }}
+                  role="option"
+                  aria-selected={selected}
+                  onClick={() => chooseTheme(t)}
                   className="theme-row"
                 >
                   <div className="flex items-center gap-1 shrink-0">

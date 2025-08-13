@@ -13,7 +13,7 @@ export const projects: Project[] = [
     icon: '/icons/ichiro-walks.png',
     path: '/ichiro-walks/today',
     healthPath: '/ichiro-walks/actuator/health',
-    infoPath: '/ichiro-walks-tree/actuator/info',
+    infoPath: '/ichiro-walks/actuator/info',
   },
   {
     name: 'Shortly',

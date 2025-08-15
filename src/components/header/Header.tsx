@@ -1,4 +1,6 @@
 import { ThemePicker } from '../theme-picker/ThemePicker';
+import React from 'react';
+import { GithubIcon } from '../icons/GithubIcon';
 
 type HeaderProps = {
   title: string;
@@ -18,7 +20,7 @@ export function Header({ title, githubUrl }: HeaderProps) {
           aria-label="GitHub profile"
           className="btn btn-ghost btn-circle"
         >
-          <img src="/icons/github.svg" alt="" className="size-6" />
+          <GithubIcon className="btn-primary btn-circle btn-sm" />
         </a>
       </div>
     </header>

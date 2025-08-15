@@ -1,7 +1,8 @@
 import React from 'react';
 import { Dropdown } from '../ui/Dropdown';
 import { applyTheme, getCurrentTheme } from '../../utils/themeUtils';
-import { type ThemeName, Themes } from '../../constants/Themes';
+import { Themes } from '../../constants/Themes';
+import { type ThemeName } from '../../types';
 import { LocalStorageKeys } from '../../constants/LocalStorageKeys';
 import { PaletteIcon } from '../icons/PaletteIcon';
 

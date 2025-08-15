@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import type { Project } from '../types';
 
 export function useVersion(items: Project[], timeoutMs = 5000) {
-  const [version, setVersion] = useState<Record<string, string>>({});
+  const [version, setVersion] = useState<Record<string, string | null>>({});
 
   useEffect(() => {
     let mounted = true;
@@ -24,11 +24,17 @@ export function useVersion(items: Project[], timeoutMs = 5000) {
 
           const contentType = res.headers.get('content-type') || '';
           if (!contentType.includes('application/json')) {
-            return null; // reachable non-JSON
+            return null;
           }
 
           const body = await res.json().catch(() => ({}));
-          return body?.build?.version ?? null;
+          const rawVersion = body?.build?.version ?? body?.version ?? body?.Version;
+          if (rawVersion == null) {
+            return null;
+          }
+
+          const stringVersion = String(rawVersion).trim();
+          return stringVersion || null;
         })
         .catch(() => null)
         .then((s) => {

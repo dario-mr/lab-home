@@ -1,3 +1,5 @@
+import { Themes } from './constants/Themes';
+
 export type Status = 'UP' | 'DOWN' | '...';
 
 export interface Project {
@@ -7,3 +9,6 @@ export interface Project {
   healthPath: string;
   infoPath: string;
 }
+
+export type ThemeKey = keyof typeof Themes;
+export type ThemeName = (typeof Themes)[ThemeKey];

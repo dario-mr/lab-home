@@ -25,7 +25,11 @@ export function useHealth(items: Project[], timeoutMs = 5000) {
           const contentType = res.headers.get('content-type') || '';
           if (contentType.includes('application/json')) {
             const body = await res.json().catch(() => ({}));
-            const status = String(body?.status ?? '').toUpperCase();
+            // if no "status" field, treat as UP
+            if (!Object.prototype.hasOwnProperty.call(body, 'status') || body.status == null) {
+              return 'UP';
+            }
+            const status = String(body.status).toUpperCase();
             return status === 'UP' ? 'UP' : 'DOWN';
           }
 

@@ -35,6 +35,3 @@ export const Themes = {
   ABYSS: 'abyss',
   SILK: 'silk',
 } as const;
-
-export type ThemeKey = keyof typeof Themes;
-export type ThemeName = (typeof Themes)[ThemeKey];

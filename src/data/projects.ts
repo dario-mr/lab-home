@@ -2,6 +2,13 @@ import type { Project } from '../types';
 
 export const projects: Project[] = [
   {
+    name: 'Portainer',
+    icon: '/icons/portainer.svg',
+    path: '/portainer/',
+    healthPath: '/portainer/api/status',
+    infoPath: '/portainer/api/status',
+  },
+  {
     name: 'Ichiro Family Tree',
     icon: '/icons/ichiro-family-tree.png',
     path: '/ichiro-family-tree/',

@@ -5,8 +5,8 @@ export const projects: Project[] = [
     name: 'Portainer',
     icon: '/icons/portainer.svg',
     path: '/portainer/',
-    healthPath: '/portainer/api/status',
-    infoPath: '/portainer/api/status',
+    healthPath: '/portainer/api/system/status',
+    infoPath: '/portainer/api/system/status',
   },
   {
     name: 'Ichiro Family Tree',

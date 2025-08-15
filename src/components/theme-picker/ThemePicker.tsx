@@ -41,31 +41,32 @@ export function ThemePicker() {
           <span className="sr-only">Change theme</span>
         </>
       }
-    >
-      <ul className="max-h-80 overflow-y-auto space-y-2">
-        {themeNames.map((t) => {
-          const selected = t === theme;
-          return (
-            <li key={t}>
-              <button
-                type="button"
-                data-theme={t}
-                data-selected={selected}
-                onClick={() => chooseTheme(t)}
-                className="theme-row"
-              >
-                <div className="flex items-center gap-1 shrink-0">
-                  <span className="theme-swatch bg-primary" />
-                  <span className="theme-swatch bg-secondary" />
-                  <span className="theme-swatch bg-accent" />
-                </div>
-                <span className="capitalize grow text-left">{t}</span>
-                {selected && <span className="badge badge-xs badge-primary">✓</span>}
-              </button>
-            </li>
-          );
-        })}
-      </ul>
-    </Dropdown>
+      children={
+        <ul className="max-h-80 overflow-y-auto space-y-2">
+          {themeNames.map((t) => {
+            const selected = t === theme;
+            return (
+              <li key={t}>
+                <button
+                  type="button"
+                  data-theme={t}
+                  data-selected={selected}
+                  onClick={() => chooseTheme(t)}
+                  className="theme-row"
+                >
+                  <div className="flex items-center gap-1 shrink-0">
+                    <span className="theme-swatch bg-primary" />
+                    <span className="theme-swatch bg-secondary" />
+                    <span className="theme-swatch bg-accent" />
+                  </div>
+                  <span className="capitalize grow text-left">{t}</span>
+                  {selected && <span className="badge badge-xs badge-primary">✓</span>}
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      }
+    ></Dropdown>
   );
 }

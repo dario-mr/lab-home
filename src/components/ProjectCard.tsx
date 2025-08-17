@@ -18,7 +18,7 @@ export function ProjectCard({
       href={project.path}
       target="_blank"
       rel="noopener noreferrer"
-      className="card bg-base-300 hover:bg-base-content/20 transition-colors shadow-md
+      className="card bg-base-200 hover:bg-base-content/20 transition-colors shadow-md
                  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}

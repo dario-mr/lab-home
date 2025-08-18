@@ -11,7 +11,7 @@ export function ProjectCard({
   version?: string;
 }) {
   const badge =
-    status === 'UP' ? 'badge-success' : status === 'DOWN' ? 'badge-error' : 'badge-ghost';
+    status === 'UP' ? 'badge-success' : status === 'DOWN' ? 'badge-error' : 'badge-soft';
 
   return (
     <motion.a
@@ -28,7 +28,7 @@ export function ProjectCard({
         <img src={project.icon} alt="" className="size-10" />
         <h2 className="card-title text-lg">{project.name}</h2>
         <div className="ml-auto flex flex-col items-end gap-1">
-          {version && <span className="badge badge-sm badge-outline-thin">v{version}</span>}
+          <span className="badge badge-sm badge-outline-thin">v{version}</span>
           <span className={`ml-auto badge badge-sm ${badge}`}>{status}</span>
         </div>
       </div>

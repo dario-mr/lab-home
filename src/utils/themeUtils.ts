@@ -1,6 +1,6 @@
-import { LocalStorageKeys } from '../constants/LocalStorageKeys';
-import { Themes } from '../constants/Themes';
-import { type ThemeName } from '../types';
+import { LocalStorageKeys } from '@/constants/LocalStorageKeys';
+import { Themes } from '@/constants/Themes';
+import { type ThemeName } from '@/types';
 
 const DEFAULT_THEME: ThemeName = Themes.CARAMELLATTE;
 const THEME_SET = new Set<ThemeName>(Object.values(Themes) as ThemeName[]);

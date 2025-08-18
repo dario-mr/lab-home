@@ -7,7 +7,7 @@
 }
 
 /* Selected state: inset ring so it doesn't clip */
-.theme-row[data-selected="true"] {
+.theme-row[data-selected='true'] {
   @apply ring-inset ring-1 ring-primary/40;
 }
 

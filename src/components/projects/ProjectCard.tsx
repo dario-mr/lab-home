@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import type { Project, Status } from '../../types';
+import type { Project, Status } from '@/types';
 
 export function ProjectCard({
   project,

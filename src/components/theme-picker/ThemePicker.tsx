@@ -1,9 +1,9 @@
 import React from 'react';
 import { Dropdown } from '../ui/Dropdown';
-import { applyTheme, getCurrentTheme } from '../../utils/themeUtils';
-import { Themes } from '../../constants/Themes';
-import { type ThemeName } from '../../types';
-import { LocalStorageKeys } from '../../constants/LocalStorageKeys';
+import { applyTheme, getCurrentTheme } from '@/utils/themeUtils';
+import { Themes } from '@/constants/Themes';
+import { type ThemeName } from '@/types';
+import { LocalStorageKeys } from '@/constants/LocalStorageKeys';
 import { PaletteIcon } from '../icons/PaletteIcon';
 
 const themeNames = Object.values(Themes) as ThemeName[];

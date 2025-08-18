@@ -1,6 +1,6 @@
-@import "tailwindcss";
-@import "./components/theme-picker/ThemePicker.css";
-@import "./components/header/Header.css";
+@import 'tailwindcss';
+@import './components/theme-picker/ThemePicker.css';
+@import './components/header/Header.css';
 
 @plugin "daisyui" {
   themes: all;

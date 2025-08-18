@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import type { Project } from '../types';
-import { projectService } from '../components/projects/ProjectService';
+import type { Project } from '@/types';
+import { projectService } from 'components/projects/ProjectService';
 
 export function useVersion(projects: Project[]) {
   // set all projects to "empty" version

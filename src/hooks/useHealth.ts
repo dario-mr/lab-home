@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import type { Project, Status } from '../types';
-import { projectService } from '../components/projects/ProjectService';
+import type { Project, Status } from '@/types';
+import { projectService } from 'components/projects/ProjectService';
 
 export function useHealth(projects: Project[]) {
   // set all projects to "loading" state

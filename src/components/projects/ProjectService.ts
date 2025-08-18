@@ -25,29 +25,31 @@ class ProjectService {
   }
 
   async getProjectVersion(infoPath: string): Promise<string> {
+    const undefinedVersion = '...';
+
     try {
       const res = await fetch(infoPath, {
         headers: { accept: 'application/json' },
       });
 
       if (!res.ok) {
-        return '';
+        return undefinedVersion;
       }
 
       const contentType = res.headers.get('content-type') ?? '';
       if (!contentType.includes('application/json')) {
-        return '';
+        return undefinedVersion;
       }
 
       const body: any = await res.json().catch(() => ({}));
       const rawVersion = body?.build?.version ?? body?.version ?? body?.Version;
       if (rawVersion == null) {
-        return '';
+        return undefinedVersion;
       }
 
       return String(rawVersion).trim();
     } catch {
-      return '';
+      return undefinedVersion;
     }
   }
 }

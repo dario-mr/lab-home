@@ -3,26 +3,9 @@ import { projects } from '@/data/projects';
 import { useHealth } from '@/hooks/useHealth';
 import { Header } from '@/components/header/Header';
 import { ProjectCard } from '@/components/projects/ProjectCard';
-import { motion, stagger, type Variants } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useVersion } from '@/hooks/useVersion';
-
-const listAnimation: Variants = {
-  hidden: {},
-  show: {
-    transition: {
-      delayChildren: stagger(0.06),
-    },
-  },
-};
-
-const itemAnimation: Variants = {
-  hidden: { opacity: 0, y: 8 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { type: 'spring', stiffness: 300, damping: 24 },
-  },
-};
+import { itemAnimation, listAnimation } from '@/constants/Animations';
 
 export default function Home() {
   const health = useHealth(projects);

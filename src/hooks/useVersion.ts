@@ -2,10 +2,13 @@ import { useEffect, useState } from 'react';
 import type { Project } from '@/types';
 import { projectService } from 'components/projects/ProjectService';
 
+// undefined = loading, null = error
+type VersionMap = Record<string, string | null | undefined>;
+
 export function useVersion(projects: Project[]) {
   // set all projects to "empty" version
-  const [versionMap, setVersionMap] = useState<Record<string, string>>(
-    () => Object.fromEntries(projects.map((p) => [p.infoPath, '...'])) as Record<string, string>
+  const [versionMap, setVersionMap] = useState<VersionMap>(
+    () => Object.fromEntries(projects.map((p) => [p.infoPath, undefined])) as VersionMap
   );
 
   useEffect(() => {

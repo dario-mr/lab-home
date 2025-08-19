@@ -2,10 +2,13 @@ import { useEffect, useState } from 'react';
 import type { Project, Status } from '@/types';
 import { projectService } from 'components/projects/ProjectService';
 
+// undefined = loading
+type HealthMap = Record<string, Status | undefined>;
+
 export function useHealth(projects: Project[]) {
   // set all projects to "loading" state
-  const [healthMap, setHealthMap] = useState<Record<string, Status>>(
-    () => Object.fromEntries(projects.map((p) => [p.healthPath, '...'])) as Record<string, Status>
+  const [healthMap, setHealthMap] = useState<HealthMap>(
+    () => Object.fromEntries(projects.map((p) => [p.healthPath, undefined])) as HealthMap
   );
 
   useEffect(() => {

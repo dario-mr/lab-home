@@ -1,6 +1,6 @@
 import { Themes } from './constants/Themes';
 
-export type Status = 'UP' | 'DOWN' | '...';
+export type Status = 'UP' | 'DOWN';
 
 export interface Project {
   name: string;

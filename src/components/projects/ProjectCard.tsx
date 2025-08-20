@@ -1,17 +1,9 @@
 import { motion } from 'framer-motion';
-import type { Project, Status } from '@/types';
+import type { Project, ProjectMeta } from '@/types';
 import { VersionBadge } from '@/components/projects/VersionBadge';
 import { HealthBadge } from '@/components/projects/HealthBadge';
 
-export function ProjectCard({
-  project,
-  status,
-  version,
-}: {
-  project: Project;
-  status: Status | undefined;
-  version: string | null | undefined;
-}) {
+export function ProjectCard({ project, meta }: { project: Project; meta: ProjectMeta }) {
   return (
     <motion.a
       href={project.path}
@@ -27,8 +19,8 @@ export function ProjectCard({
         <img src={project.icon} alt="" className="size-10" />
         <h2 className="card-title text-lg">{project.name}</h2>
         <div className="ml-auto flex flex-col items-end gap-1">
-          <VersionBadge version={version} />
-          <HealthBadge status={status} />
+          <VersionBadge meta={meta} />
+          <HealthBadge meta={meta} />
         </div>
       </div>
     </motion.a>

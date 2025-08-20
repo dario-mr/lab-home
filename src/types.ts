@@ -10,5 +10,15 @@ export interface Project {
   infoPath: string;
 }
 
-export type ThemeKey = keyof typeof Themes;
+type ThemeKey = keyof typeof Themes;
 export type ThemeName = (typeof Themes)[ThemeKey];
+
+export type ProjectMeta =
+  | {
+      isLoading: true;
+    }
+  | {
+      isLoading: false;
+      status: Status;
+      version: string | null;
+    };

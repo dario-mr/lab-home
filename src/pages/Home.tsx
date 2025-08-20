@@ -1,15 +1,13 @@
 import React from 'react';
 import { projects } from '@/data/projects';
-import { useHealth } from '@/hooks/useHealth';
 import { Header } from '@/components/header/Header';
 import { ProjectCard } from '@/components/projects/ProjectCard';
 import { motion } from 'framer-motion';
-import { useVersion } from '@/hooks/useVersion';
 import { itemAnimation, listAnimation } from '@/constants/Animations';
+import { useMetadata } from '@/hooks/useMetadata';
 
 export default function Home() {
-  const health = useHealth(projects);
-  const version = useVersion(projects);
+  const metaPerProject = useMetadata(projects);
 
   return (
     <main className="min-h-dvh bg-base-100">
@@ -25,9 +23,9 @@ export default function Home() {
           {projects.map((project) => (
             <motion.li key={project.path} variants={itemAnimation}>
               <ProjectCard
+                key={project.path}
                 project={project}
-                status={health[project.healthPath]}
-                version={version[project.infoPath]}
+                meta={metaPerProject[project.path]}
               />
             </motion.li>
           ))}

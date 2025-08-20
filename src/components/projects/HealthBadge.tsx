@@ -1,14 +1,14 @@
-import type { Status } from '@/types';
+import type { ProjectMeta } from '@/types';
 
-export function HealthBadge({ status }: { status: Status | undefined }) {
-  const baseClass = 'badge badge-sm w-14';
-  const statusClass = status === 'UP' ? 'badge-success' : 'badge-error';
+export function HealthBadge({ meta }: { meta: ProjectMeta }) {
+  const baseClass: string = 'badge badge-sm w-14';
+  const statusClass = !meta.isLoading && meta.status === 'UP' ? 'badge-success' : 'badge-error';
 
-  // Loading
-  if (status === undefined) {
+  // loading
+  if (meta.isLoading) {
     return <span className={`${baseClass} skeleton`} />;
   }
 
-  // Ready
-  return <span className={`${baseClass} ${statusClass}`}>{status}</span>;
+  // ready
+  return <span className={`${baseClass} ${statusClass}`}>{meta.status}</span>;
 }

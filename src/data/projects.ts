@@ -2,13 +2,6 @@ import type { Project } from '@/types';
 
 export const projects: Project[] = [
   {
-    name: 'Portainer',
-    icon: '/icons/portainer.svg',
-    path: '/portainer/',
-    healthPath: '/portainer/api/system/status',
-    infoPath: '/portainer/api/system/status',
-  },
-  {
     name: 'Ichiro Family Tree',
     icon: '/icons/ichiro-family-tree.png',
     path: '/ichiro-family-tree/',
@@ -35,5 +28,19 @@ export const projects: Project[] = [
     path: '/api-stress-test/',
     healthPath: '/api-stress-test/actuator/health',
     infoPath: '/api-stress-test/actuator/info',
+  },
+  {
+    name: 'Portainer',
+    icon: '/icons/portainer.svg',
+    path: '/portainer/',
+    healthPath: '/portainer/api/system/status',
+    infoPath: '/portainer/api/system/status',
+  },
+  {
+    name: 'Grafana',
+    icon: '/icons/grafana.svg',
+    path: '/grafana/',
+    healthPath: '/grafana/api/health',
+    infoPath: '/grafana/api/health',
   },
 ];

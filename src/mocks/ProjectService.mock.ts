@@ -1,14 +1,23 @@
-import type { Status } from '@/types';
+import { ProjectMeta, Status } from '@/types';
 
 class ProjectService {
-  async getProjectHealth(_healthPath: string): Promise<Status> {
+  async getProjectsMeta(
+    projects: Array<{ path: string; healthPath: string; infoPath: string }>
+  ): Promise<Record<string, ProjectMeta>> {
     await randomSleep(1000, 2000);
-    return randomStatus();
-  }
 
-  async getProjectVersion(_infoPath: string): Promise<string | null> {
-    await randomSleep(1000, 2000);
-    return randomVersion();
+    const entries = projects.map(
+      (project) =>
+        [
+          project.path,
+          {
+            status: randomStatus(),
+            version: randomVersion(),
+          },
+        ] as const
+    );
+
+    return Object.fromEntries(entries);
   }
 }
 

@@ -3,7 +3,15 @@ import type { Project, ProjectMeta } from '@/types';
 import { VersionBadge } from '@/components/projects/VersionBadge';
 import { HealthBadge } from '@/components/projects/HealthBadge';
 
-export function ProjectCard({ project, meta }: { project: Project; meta: ProjectMeta }) {
+export function ProjectCard({
+  project,
+  meta,
+  isLoading,
+}: {
+  project: Project;
+  meta: ProjectMeta;
+  isLoading: boolean;
+}) {
   return (
     <motion.a
       href={project.path}
@@ -19,8 +27,8 @@ export function ProjectCard({ project, meta }: { project: Project; meta: Project
         <img src={project.icon} alt="" className="size-10" />
         <h2 className="card-title text-lg">{project.name}</h2>
         <div className="ml-auto flex flex-col items-end gap-1">
-          <VersionBadge meta={meta} />
-          <HealthBadge meta={meta} />
+          <VersionBadge meta={meta} isLoading={isLoading} />
+          <HealthBadge meta={meta} isLoading={isLoading} />
         </div>
       </div>
     </motion.a>

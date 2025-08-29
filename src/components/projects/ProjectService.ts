@@ -1,6 +1,26 @@
-import type { Status } from '@/types';
+import { ProjectMeta, Status } from '@/types';
 
 export class ProjectService {
+  async getProjectsMeta(
+    projects: Array<{ path: string; healthPath: string; infoPath: string }>
+  ): Promise<Record<string, ProjectMeta>> {
+    if (projects.length === 0) {
+      return {};
+    }
+
+    const entries = await Promise.all(
+      projects.map(async (p) => {
+        const [status, version] = await Promise.all([
+          this.getProjectHealth(p.healthPath),
+          this.getProjectVersion(p.infoPath),
+        ]);
+        return [p.path, { status, version }] as const;
+      })
+    );
+
+    return Object.fromEntries(entries);
+  }
+
   async getProjectHealth(healthPath: string): Promise<Status> {
     try {
       const res = await fetch(healthPath, { headers: { accept: 'application/json' } });

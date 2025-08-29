@@ -25,7 +25,8 @@ export default function Home() {
               <ProjectCard
                 key={project.path}
                 project={project}
-                meta={metaPerProject[project.path]}
+                meta={metaPerProject.meta[project.path]}
+                isLoading={metaPerProject.isLoading}
               />
             </motion.li>
           ))}

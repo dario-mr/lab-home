@@ -13,12 +13,7 @@ export interface Project {
 type ThemeKey = keyof typeof Themes;
 export type ThemeName = (typeof Themes)[ThemeKey];
 
-export type ProjectMeta =
-  | {
-      isLoading: true;
-    }
-  | {
-      isLoading: false;
-      status: Status;
-      version: string | null;
-    };
+export type ProjectMeta = {
+  status: Status;
+  version: string | null;
+};

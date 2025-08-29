@@ -9,6 +9,7 @@ export function useMetadata(projects: Project[]) {
     queryKey: ['projects-meta', projects.map((p) => p.path)],
     enabled: projects.length > 0,
     queryFn: () => projectService.getProjectsMeta(projects),
+    refetchOnWindowFocus: false,
   });
 
   return {

@@ -1,4 +1,4 @@
-import type { Project } from '@/types';
+import type {Project} from '@/types';
 
 export const projects: Project[] = [
   {
@@ -42,5 +42,12 @@ export const projects: Project[] = [
     path: '/grafana/',
     healthPath: '/grafana/api/health',
     infoPath: '/grafana/api/health',
+  },
+  {
+    name: 'HTMX demo',
+    icon: '/icons/htmx-demo.png',
+    path: '/htmx-demo/',
+    healthPath: '/htmx-demo/actuator/health',
+    infoPath: '/htmx-demo/actuator/info',
   },
 ];

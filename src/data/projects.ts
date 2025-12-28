@@ -1,4 +1,4 @@
-import type {Project} from '@/types';
+import type { Project } from '@/types';
 
 export const projects: Project[] = [
   {
@@ -49,5 +49,12 @@ export const projects: Project[] = [
     path: '/htmx-demo/',
     healthPath: '/htmx-demo/actuator/health',
     infoPath: '/htmx-demo/actuator/info',
+  },
+  {
+    name: 'Matrix Conduit',
+    icon: '/icons/conduit.svg',
+    path: 'https://matrix.dariolab.com/',
+    healthPath: 'https://matrix.dariolab.com/_matrix/client/versions',
+    infoPath: '',
   },
 ];

@@ -22,6 +22,10 @@ export class ProjectService {
   }
 
   async getProjectHealth(healthPath: string): Promise<Status> {
+    if (!healthPath) {
+      return 'DOWN';
+    }
+
     try {
       const res = await fetch(healthPath, { headers: { accept: 'application/json' } });
       if (!res.ok) {
@@ -41,6 +45,10 @@ export class ProjectService {
   }
 
   async getProjectVersion(infoPath: string): Promise<string | null> {
+    if (!infoPath) {
+      return null;
+    }
+
     try {
       const res = await fetch(infoPath, { headers: { accept: 'application/json' } });
       if (!res.ok) {

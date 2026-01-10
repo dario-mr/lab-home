@@ -57,4 +57,11 @@ export const projects: Project[] = [
     healthPath: 'https://matrix.dariolab.com/_matrix/client/versions',
     infoPath: '',
   },
+  {
+    name: 'Wordle Duel',
+    icon: '/icons/wordle-duel.png',
+    path: '/wordle-duel/',
+    healthPath: '/wordle-duel/health',
+    infoPath: '/wordle-duel/info',
+  },
 ];

@@ -21,10 +21,11 @@ export default function Home() {
 
         {metaPerProject.isLoading ? (
           <ProjectGrid
+            title="Up"
             projects={projects}
             metaByPath={metaPerProject.meta}
             isLoading={metaPerProject.isLoading}
-            animate
+            animate={true}
           />
         ) : (
           <div className="space-y-8">

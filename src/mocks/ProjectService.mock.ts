@@ -4,7 +4,7 @@ class ProjectService {
   async getProjectsMeta(
     projects: Array<{ path: string; healthPath: string; infoPath: string }>
   ): Promise<Record<string, ProjectMeta>> {
-    await randomSleep(1000, 2000);
+    await randomSleep(3000, 3000);
 
     const entries = projects.map(
       (project) =>

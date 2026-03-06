@@ -1,7 +1,7 @@
 import type { ProjectMeta } from '@/types';
 
 export function VersionBadge({ meta, isLoading }: { meta: ProjectMeta; isLoading: boolean }) {
-  const baseClass: string = 'badge badge-sm w-18';
+  const baseClass: string = 'badge badge-sm min-w-18';
 
   // loading
   if (isLoading) {

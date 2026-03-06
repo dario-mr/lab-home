@@ -42,6 +42,6 @@ jobs:
           file: Dockerfile
           push: true
           platforms: linux/arm64
-          tags: dariomr8/lab-home:1.0.1
+          tags: dariomr8/lab-home:1.0.2
           cache-from: type=registry,ref=dariomr8/lab-home:buildcache
           cache-to: type=registry,ref=dariomr8/lab-home:buildcache,mode=max

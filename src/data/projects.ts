@@ -64,4 +64,11 @@ export const projects: Project[] = [
     healthPath: '/wordle-duel/health',
     infoPath: '/wordle-duel/info',
   },
+  {
+    name: 'Headlamp',
+    icon: '/icons/headlamp.png',
+    path: '/dashboard/',
+    healthPath: '/dashboard/config',
+    infoPath: '',
+  },
 ];

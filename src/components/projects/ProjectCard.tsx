@@ -28,7 +28,7 @@ export function ProjectCard({
         <h2 className="card-title text-lg">{project.name}</h2>
         <div className="ml-auto flex flex-col items-end gap-1">
           <VersionBadge meta={meta} isLoading={isLoading} />
-          <HealthBadge meta={meta} isLoading={isLoading} />
+          <HealthBadge meta={meta} isLoading={isLoading} isEnabled={project.enabled} />
         </div>
       </div>
     </motion.a>

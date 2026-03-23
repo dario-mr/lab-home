@@ -5,12 +5,14 @@ import { ProjectGrid } from '@/components/projects/ProjectGrid';
 import { useMetadata } from '@/hooks/useMetadata';
 
 export default function Home() {
-  const metaPerProject = useMetadata(projects);
+  const enabledProjects = projects.filter((project) => project.enabled);
+  const disabledProjects = projects.filter((project) => !project.enabled);
+  const metaPerProject = useMetadata(enabledProjects);
 
-  const upProjects = projects.filter(
+  const upProjects = enabledProjects.filter(
     (project) => metaPerProject.meta[project.path]?.status === 'UP'
   );
-  const downProjects = projects.filter(
+  const downProjects = enabledProjects.filter(
     (project) => metaPerProject.meta[project.path]?.status !== 'UP'
   );
 
@@ -22,25 +24,37 @@ export default function Home() {
         {metaPerProject.isLoading ? (
           <ProjectGrid
             title="Up"
-            projects={projects}
+            projects={enabledProjects}
             metaByPath={metaPerProject.meta}
             isLoading={metaPerProject.isLoading}
             animate={true}
           />
         ) : (
           <div className="space-y-8">
-            <ProjectGrid
-              title="Up"
-              projects={upProjects}
-              metaByPath={metaPerProject.meta}
-              isLoading={false}
-            />
-            <ProjectGrid
-              title="Down"
-              projects={downProjects}
-              metaByPath={metaPerProject.meta}
-              isLoading={false}
-            />
+            {upProjects.length > 0 && (
+              <ProjectGrid
+                title="Up"
+                projects={upProjects}
+                metaByPath={metaPerProject.meta}
+                isLoading={false}
+              />
+            )}
+            {downProjects.length > 0 && (
+              <ProjectGrid
+                title="Down"
+                projects={downProjects}
+                metaByPath={metaPerProject.meta}
+                isLoading={false}
+              />
+            )}
+            {disabledProjects.length > 0 && (
+              <ProjectGrid
+                title="Disabled"
+                projects={disabledProjects}
+                metaByPath={metaPerProject.meta}
+                isLoading={false}
+              />
+            )}
           </div>
         )}
       </div>

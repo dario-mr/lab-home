@@ -8,6 +8,7 @@ export interface Project {
   path: string;
   healthPath: string;
   infoPath: string;
+  enabled: boolean;
 }
 
 type ThemeKey = keyof typeof Themes;

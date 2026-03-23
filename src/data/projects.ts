@@ -7,6 +7,7 @@ export const projects: Project[] = [
     path: '/ichiro-family-tree/',
     healthPath: '/ichiro-family-tree/actuator/health',
     infoPath: '/ichiro-family-tree/actuator/info',
+    enabled: false,
   },
   {
     name: 'Ichiro Walks',
@@ -14,6 +15,7 @@ export const projects: Project[] = [
     path: '/ichiro-walks/today',
     healthPath: '/ichiro-walks/actuator/health',
     infoPath: '/ichiro-walks/actuator/info',
+    enabled: false,
   },
   {
     name: 'Shortly',
@@ -21,6 +23,7 @@ export const projects: Project[] = [
     path: '/shortly/',
     healthPath: '/shortly/actuator/health',
     infoPath: '/shortly/actuator/info',
+    enabled: false,
   },
   {
     name: 'API Stress Test',
@@ -28,6 +31,7 @@ export const projects: Project[] = [
     path: '/api-stress-test/',
     healthPath: '/api-stress-test/actuator/health',
     infoPath: '/api-stress-test/actuator/info',
+    enabled: false,
   },
   {
     name: 'Portainer',
@@ -35,6 +39,7 @@ export const projects: Project[] = [
     path: '/portainer/',
     healthPath: '/portainer/api/system/status',
     infoPath: '/portainer/api/system/status',
+    enabled: false,
   },
   {
     name: 'Grafana',
@@ -42,6 +47,7 @@ export const projects: Project[] = [
     path: '/grafana/',
     healthPath: '/grafana/api/health',
     infoPath: '/grafana/api/health',
+    enabled: true,
   },
   {
     name: 'HTMX demo',
@@ -49,6 +55,7 @@ export const projects: Project[] = [
     path: '/htmx-demo/',
     healthPath: '/htmx-demo/actuator/health',
     infoPath: '/htmx-demo/actuator/info',
+    enabled: false,
   },
   {
     name: 'Matrix Conduit',
@@ -56,6 +63,7 @@ export const projects: Project[] = [
     path: 'https://matrix.dariolab.com/',
     healthPath: 'https://matrix.dariolab.com/_matrix/client/versions',
     infoPath: '',
+    enabled: false,
   },
   {
     name: 'Wordle Duel',
@@ -63,6 +71,7 @@ export const projects: Project[] = [
     path: '/wordle-duel/',
     healthPath: '/wordle-duel/health',
     infoPath: '/wordle-duel/info',
+    enabled: true,
   },
   {
     name: 'Headlamp',
@@ -70,5 +79,6 @@ export const projects: Project[] = [
     path: '/dashboard/',
     healthPath: '/dashboard/config',
     infoPath: '',
+    enabled: true,
   },
 ];

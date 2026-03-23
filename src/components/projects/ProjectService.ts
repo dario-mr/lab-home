@@ -1,15 +1,15 @@
-import { ProjectMeta, Status } from '@/types';
+import { Project, ProjectMeta, Status } from '@/types';
 
 export class ProjectService {
-  async getProjectsMeta(
-    projects: Array<{ path: string; healthPath: string; infoPath: string }>
-  ): Promise<Record<string, ProjectMeta>> {
-    if (projects.length === 0) {
+  async getProjectsMeta(projects: Project[]): Promise<Record<string, ProjectMeta>> {
+    const enabledProjects = projects.filter((project) => project.enabled);
+
+    if (enabledProjects.length === 0) {
       return {};
     }
 
     const entries = await Promise.all(
-      projects.map(async (p) => {
+      enabledProjects.map(async (p) => {
         const [status, version] = await Promise.all([
           this.getProjectHealth(p.healthPath),
           this.getProjectVersion(p.infoPath),

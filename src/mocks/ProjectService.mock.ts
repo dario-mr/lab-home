@@ -1,10 +1,8 @@
-import { ProjectMeta, Status } from '@/types';
+import { Project, ProjectMeta, Status } from '@/types';
 
 class ProjectService {
-  async getProjectsMeta(
-    projects: Array<{ path: string; healthPath: string; infoPath: string }>
-  ): Promise<Record<string, ProjectMeta>> {
-    await randomSleep(3000, 3000);
+  async getProjectsMeta(projects: Project[]): Promise<Record<string, ProjectMeta>> {
+    await randomSleep(1000, 1000);
 
     const entries = projects.map(
       (project) =>
